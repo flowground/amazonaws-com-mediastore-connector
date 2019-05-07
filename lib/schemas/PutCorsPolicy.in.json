@@ -1,0 +1,130 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "ContainerName": {
+                    "description": "The name of the container that you want to assign the CORS policy to.",
+                    "maxLength": 255,
+                    "minLength": 1,
+                    "pattern": "[\\w-]+",
+                    "type": "string"
+                },
+                "CorsPolicy": {
+                    "description": "The CORS policy to apply to the container. ",
+                    "items": {
+                        "description": "A rule for a CORS policy. You can add up to 100 rules to a CORS policy. If more than one rule applies, the service uses the first applicable rule listed.",
+                        "properties": {
+                            "AllowedHeaders": {
+                                "description": "<p>Specifies which headers are allowed in a preflight <code>OPTIONS</code> request through the <code>Access-Control-Request-Headers</code> header. Each header name that is specified in <code>Access-Control-Request-Headers</code> must have a corresponding entry in the rule. Only the headers that were requested are sent back. </p> <p>This element can contain only one wildcard character (*).</p>",
+                                "items": {
+                                    "maxLength": 8192,
+                                    "minLength": 1,
+                                    "pattern": "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+",
+                                    "type": "string"
+                                },
+                                "maxItems": 100,
+                                "minItems": 0,
+                                "type": "array"
+                            },
+                            "AllowedMethods": {
+                                "description": "<p>Identifies an HTTP method that the origin that is specified in the rule is allowed to execute.</p> <p>Each CORS rule must contain at least one <code>AllowedMethods</code> and one <code>AllowedOrigins</code> element.</p>",
+                                "items": {
+                                    "enum": [
+                                        "PUT",
+                                        "GET",
+                                        "DELETE",
+                                        "HEAD"
+                                    ],
+                                    "type": "string"
+                                },
+                                "maxItems": 4,
+                                "minItems": 1,
+                                "type": "array"
+                            },
+                            "AllowedOrigins": {
+                                "description": "<p>One or more response headers that you want users to be able to access from their applications (for example, from a JavaScript <code>XMLHttpRequest</code> object).</p> <p>Each CORS rule must have at least one <code>AllowedOrigins</code> element. The string value can include only one wildcard character (*), for example, http://*.example.com. Additionally, you can specify only one wildcard character to allow cross-origin access for all origins.</p>",
+                                "items": {
+                                    "maxLength": 2048,
+                                    "minLength": 1,
+                                    "pattern": "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+",
+                                    "type": "string"
+                                },
+                                "maxItems": 100,
+                                "minItems": 1,
+                                "type": "array"
+                            },
+                            "ExposeHeaders": {
+                                "description": "<p>One or more headers in the response that you want users to be able to access from their applications (for example, from a JavaScript <code>XMLHttpRequest</code> object).</p> <p>This element is optional for each rule.</p>",
+                                "items": {
+                                    "maxLength": 8192,
+                                    "minLength": 1,
+                                    "pattern": "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+",
+                                    "type": "string"
+                                },
+                                "maxItems": 100,
+                                "minItems": 0,
+                                "type": "array"
+                            },
+                            "MaxAgeSeconds": {
+                                "description": "<p>The time in seconds that your browser caches the preflight response for the specified resource.</p> <p>A CORS rule can have only one <code>MaxAgeSeconds</code> element.</p>",
+                                "maximum": 2147483647,
+                                "minimum": 0,
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "AllowedOrigins",
+                            "AllowedHeaders"
+                        ],
+                        "type": "object"
+                    },
+                    "maxItems": 100,
+                    "minItems": 1,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "ContainerName",
+                "CorsPolicy"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,295 @@
+{
+    "title": "AWS Elemental MediaStore",
+    "description": "An AWS Elemental MediaStore container is a namespace that holds folders and objects. You use a container endpoint to create, read, and delete objects. ",
+    "docsUrl": "https://docs.aws.amazon.com/mediastore/",
+    "url": "https://api.apis.guru/v2/specs/amazonaws.com/mediastore/2017-09-01/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://mediastore.amazonaws.com/",
+                    "http://mediastore.amazonaws.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "hmac": {
+                "label": "Authorization (hmac)",
+                "viewClass": "TextFieldView",
+                "note": "Amazon Signature authorization v4"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "CreateContainer": {
+            "main": "./lib/actions/CreateContainer.js",
+            "title": "Creates a storage container to hold objects. A container is similar to a bucket in the Amazon S3 service.",
+            "description": "Creates a storage container to hold objects. A container is similar to a bucket in the Amazon S3 service.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateContainer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteContainer": {
+            "main": "./lib/actions/DeleteContainer.js",
+            "title": "Deletes the specified container. Before you make a <code>DeleteContainer</code> request, delete any objects in the container or in any folders in the container. You can delete only empty containers. ",
+            "description": "Deletes the specified container. Before you make a <code>DeleteContainer</code> request, delete any objects in the container or in any folders in the container. You can delete only empty containers. ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteContainer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteContainerPolicy": {
+            "main": "./lib/actions/DeleteContainerPolicy.js",
+            "title": "Deletes the access policy that is associated with the specified container.",
+            "description": "Deletes the access policy that is associated with the specified container.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteContainerPolicy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteCorsPolicy": {
+            "main": "./lib/actions/DeleteCorsPolicy.js",
+            "title": "<p>Deletes the cross-origin resource sharing (CORS) configuration information that is set for the container.</p> <p>To use this operation, you must have permission to perform the <code>MediaStore:DeleteCorsPolicy</code> action. The container owner has this permission by default and can grant this permission to others.</p>",
+            "description": "<p>Deletes the cross-origin resource sharing (CORS) configuration information that is set for the container.</p> <p>To use this operation, you must have permission to perform the <code>MediaStore:DeleteCorsPolicy</code> action. The container owner has this permission by default and can grant this permission to others.</p>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteCorsPolicy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteLifecyclePolicy": {
+            "main": "./lib/actions/DeleteLifecyclePolicy.js",
+            "title": "Removes an object lifecycle policy from a container. It takes up to 20 minutes for the change to take effect.",
+            "description": "Removes an object lifecycle policy from a container. It takes up to 20 minutes for the change to take effect.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteLifecyclePolicy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DescribeContainer": {
+            "main": "./lib/actions/DescribeContainer.js",
+            "title": "Retrieves the properties of the requested container. This request is commonly used to retrieve the endpoint of a container. An endpoint is a value assigned by the service when a new container is created. A container's endpoint does not change after it has been assigned. The <code>DescribeContainer</code> request returns a single <code>Container</code> object based on <code>ContainerName</code>. To return all <code>Container</code> objects that are associated with a specified AWS account, use <a>ListContainers</a>.",
+            "description": "Retrieves the properties of the requested container. This request is commonly used to retrieve the endpoint of a container. An endpoint is a value assigned by the service when a new container is created. A container's endpoint does not change after it has been assigned. The <code>DescribeContainer</code> request returns a single <code>Container</code> object based on <code>ContainerName</code>. To return all <code>Container</code> objects that are associated with a specified AWS account, use <a>ListContainers</a>.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DescribeContainer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetContainerPolicy": {
+            "main": "./lib/actions/GetContainerPolicy.js",
+            "title": "Retrieves the access policy for the specified container. For information about the data that is included in an access policy, see the <a href=\"https://aws.amazon.com/documentation/iam/\">AWS Identity and Access Management User Guide</a>.",
+            "description": "Retrieves the access policy for the specified container. For information about the data that is included in an access policy, see the <a href=\"https://aws.amazon.com/documentation/iam/\">AWS Identity and Access Management User Guide</a>.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetContainerPolicy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetCorsPolicy": {
+            "main": "./lib/actions/GetCorsPolicy.js",
+            "title": "<p>Returns the cross-origin resource sharing (CORS) configuration information that is set for the container.</p> <p>To use this operation, you must have permission to perform the <code>MediaStore:GetCorsPolicy</code> action. By default, the container owner has this permission and can grant it to others.</p>",
+            "description": "<p>Returns the cross-origin resource sharing (CORS) configuration information that is set for the container.</p> <p>To use this operation, you must have permission to perform the <code>MediaStore:GetCorsPolicy</code> action. By default, the container owner has this permission and can grant it to others.</p>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetCorsPolicy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetLifecyclePolicy": {
+            "main": "./lib/actions/GetLifecyclePolicy.js",
+            "title": "Retrieves the object lifecycle policy that is assigned to a container.",
+            "description": "Retrieves the object lifecycle policy that is assigned to a container.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetLifecyclePolicy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ListContainers": {
+            "main": "./lib/actions/ListContainers.js",
+            "title": "<p>Lists the properties of all containers in AWS Elemental MediaStore. </p> <p>You can query to receive all the containers in one response. Or you can include the <code>MaxResults</code> parameter to receive a limited number of containers in each response. In this case, the response includes a token. To get the next set of containers, send the command again, this time with the <code>NextToken</code> parameter (with the returned token as its value). The next set of responses appears, with a token if there are still more containers to receive. </p> <p>See also <a>DescribeContainer</a>, which gets the properties of one container. </p>",
+            "description": "<p>Lists the properties of all containers in AWS Elemental MediaStore. </p> <p>You can query to receive all the containers in one response. Or you can include the <code>MaxResults</code> parameter to receive a limited number of containers in each response. In this case, the response includes a token. To get the next set of containers, send the command again, this time with the <code>NextToken</code> parameter (with the returned token as its value). The next set of responses appears, with a token if there are still more containers to receive. </p> <p>See also <a>DescribeContainer</a>, which gets the properties of one container. </p>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListContainers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PutContainerPolicy": {
+            "main": "./lib/actions/PutContainerPolicy.js",
+            "title": "<p>Creates an access policy for the specified container to restrict the users and clients that can access it. For information about the data that is included in an access policy, see the <a href=\"https://aws.amazon.com/documentation/iam/\">AWS Identity and Access Management User Guide</a>.</p> <p>For this release of the REST API, you can create only one policy for a container. If you enter <code>PutContainerPolicy</code> twice, the second command modifies the existing policy. </p>",
+            "description": "<p>Creates an access policy for the specified container to restrict the users and clients that can access it. For information about the data that is included in an access policy, see the <a href=\"https://aws.amazon.com/documentation/iam/\">AWS Identity and Access Management User Guide</a>.</p> <p>For this release of the REST API, you can create only one policy for a container. If you enter <code>PutContainerPolicy</code> twice, the second command modifies the existing policy. </p>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PutContainerPolicy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PutCorsPolicy": {
+            "main": "./lib/actions/PutCorsPolicy.js",
+            "title": "<p>Sets the cross-origin resource sharing (CORS) configuration on a container so that the container can service cross-origin requests. For example, you might want to enable a request whose origin is http://www.example.com to access your AWS Elemental MediaStore container at my.example.container.com by using the browser's XMLHttpRequest capability.</p> <p>To enable CORS on a container, you attach a CORS policy to the container. In the CORS policy, you configure rules that identify origins and the HTTP methods that can be executed on your container. The policy can contain up to 398,000 characters. You can add up to 100 rules to a CORS policy. If more than one rule applies, the service uses the first applicable rule listed.</p> <p>To learn more about CORS, see <a href=\"https://docs.aws.amazon.com/mediastore/latest/ug/cors-policy.html\">Cross-Origin Resource Sharing (CORS) in AWS Elemental MediaStore</a>.</p>",
+            "description": "<p>Sets the cross-origin resource sharing (CORS) configuration on a container so that the container can service cross-origin requests. For example, you might want to enable a request whose origin is http://www.example.com to access your AWS Elemental MediaStore container at my.example.container.com by using the browser's XMLHttpRequest capability.</p> <p>To enable CORS on a container, you attach a CORS policy to the container. In the CORS policy, you configure rules that identify origins and the HTTP methods that can be executed on your container. The policy can contain up to 398,000 characters. You can add up to 100 rules to a CORS policy. If more than one rule applies, the service uses the first applicable rule listed.</p> <p>To learn more about CORS, see <a href=\"https://docs.aws.amazon.com/mediastore/latest/ug/cors-policy.html\">Cross-Origin Resource Sharing (CORS) in AWS Elemental MediaStore</a>.</p>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PutCorsPolicy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PutLifecyclePolicy": {
+            "main": "./lib/actions/PutLifecyclePolicy.js",
+            "title": "<p>Writes an object lifecycle policy to a container. If the container already has an object lifecycle policy, the service replaces the existing policy with the new policy. It takes up to 20 minutes for the change to take effect.</p> <p>For information about how to construct an object lifecycle policy, see <a href=\"https://docs.aws.amazon.com/mediastore/latest/ug/policies-object-lifecycle-components.html\">Components of an Object Lifecycle Policy</a>.</p>",
+            "description": "<p>Writes an object lifecycle policy to a container. If the container already has an object lifecycle policy, the service replaces the existing policy with the new policy. It takes up to 20 minutes for the change to take effect.</p> <p>For information about how to construct an object lifecycle policy, see <a href=\"https://docs.aws.amazon.com/mediastore/latest/ug/policies-object-lifecycle-components.html\">Components of an Object Lifecycle Policy</a>.</p>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PutLifecyclePolicy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "StartAccessLogging": {
+            "main": "./lib/actions/StartAccessLogging.js",
+            "title": "Starts access logging on the specified container. When you enable access logging on a container, MediaStore delivers access logs for objects stored in that container to Amazon CloudWatch Logs.",
+            "description": "Starts access logging on the specified container. When you enable access logging on a container, MediaStore delivers access logs for objects stored in that container to Amazon CloudWatch Logs.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/StartAccessLogging.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "StopAccessLogging": {
+            "main": "./lib/actions/StopAccessLogging.js",
+            "title": "Stops access logging on the specified container. When you stop access logging on a container, MediaStore stops sending access logs to Amazon CloudWatch Logs. These access logs are not saved and are not retrievable.",
+            "description": "Stops access logging on the specified container. When you stop access logging on a container, MediaStore stops sending access logs to Amazon CloudWatch Logs. These access logs are not saved and are not retrievable.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/StopAccessLogging.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,64 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "ContainerName": {
+                    "description": "The name of the container.",
+                    "maxLength": 255,
+                    "minLength": 1,
+                    "pattern": "[\\w-]+",
+                    "type": "string"
+                },
+                "Policy": {
+                    "description": "<p>The contents of the policy, which includes the following: </p> <ul> <li> <p>One <code>Version</code> tag</p> </li> <li> <p>One <code>Statement</code> tag that contains the standard tags for the policy.</p> </li> </ul>",
+                    "maxLength": 8192,
+                    "minLength": 1,
+                    "pattern": "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ContainerName",
+                "Policy"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
