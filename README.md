@@ -1,11 +1,11 @@
-# ![LOGO](logo.png) AWS Elemental MediaStore MSP Connector
+# ![LOGO](logo.png) AWS Elemental MediaStore **flow**ground Connector
 
 ## Description
 
-A generated MSP connector for the AWS Elemental MediaStore API (version 2017-09-01).
+A generated **flow**ground connector for the AWS Elemental MediaStore API (version 2017-09-01).
 
 Generated from: https://api.apis.guru/v2/specs/amazonaws.com/mediastore/2017-09-01/swagger.json<br/>
-Generated at: 2019-05-07T11:16:19+03:00
+Generated at: 2019-05-07T17:35:59+03:00
 
 ## API Description
 
@@ -214,7 +214,7 @@ Supported authorization schemes:
 
 ## License
 
-flowground :- Telekom iPaaS / amazonaws-com-mediastore-connector<br/>
+**flow**ground :- Telekom iPaaS / amazonaws-com-mediastore-connector<br/>
 Copyright © 2019, [Deutsche Telekom AG](https://www.telekom.de)<br/>
 contact: flowground@telekom.de
 
